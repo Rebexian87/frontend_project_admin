@@ -31,7 +31,7 @@ function init() {
               <li class="liheadmenu"><a href="index.html">Startsida</a></li>
              <li class="liheadmenu"><a href="register.html">Registrera dig</a></li>
            
-               <li class="liheadmenu"><a href="loggaIn.html">Logga in</a></li>
+               <li class="liheadmenu"><a href="login.html">Logga in</a></li>
         
         `
 
@@ -42,7 +42,7 @@ function init() {
     if(logoutButton) {
         logoutButton.addEventListener("click", ()=> {
             localStorage.removeItem("user_token");
-            window.location.href="loggaIn.html"
+            window.location.href="login.html"
 
         })
     }
