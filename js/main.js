@@ -1,11 +1,7 @@
 
 function init() {
-    // changeMenu()
-    //  getFlags()
-
-    // if(logInFormEl) {
-    //     logInFormEl.addEventListener("submit", loginUser)
-    // }
+    changeMenu()
+ 
       
  
     if(registerForm) {
@@ -14,6 +10,43 @@ function init() {
 
    
     }
+
+    function changeMenu(){
+
+    // localStorage.setItem("user_token", "testtest")
+
+    if(localStorage.getItem("user_token")) {
+        menuEl.innerHTML= `
+                   <li class="liheadmenu"><a href="index.html">Startsida</a></li>
+          
+            
+            <li class="liheadmenu"><a href="secretPage.html">secret</a></li>
+            <li class="liheadmenu"><button id="logoutButton">Logga ut</button></li>
+        
+        `
+
+    } else { 
+        
+           menuEl.innerHTML= `
+              <li class="liheadmenu"><a href="index.html">Startsida</a></li>
+             <li class="liheadmenu"><a href="register.html">Registrera dig</a></li>
+           
+               <li class="liheadmenu"><a href="loggaIn.html">Logga in</a></li>
+        
+        `
+
+           //<li class="liheadmenu"><a href="register.html">Startsida</a></li>
+    }
+
+    let logoutButton= document.getElementById("logoutButton");
+    if(logoutButton) {
+        logoutButton.addEventListener("click", ()=> {
+            localStorage.removeItem("user_token");
+            window.location.href="loggaIn.html"
+
+        })
+    }
+}
 
     async function loginUser(e) {
     e.preventDefault();
