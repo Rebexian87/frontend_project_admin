@@ -1,3 +1,6 @@
+let menuEl=document.getElementById("headmenu");
+
+let logInFormEl =document.getElementById("logInForm")
 
 function init() {
     changeMenu()
@@ -7,7 +10,12 @@ function init() {
     if(registerForm) {
        document.getElementById("submits").addEventListener("click", createUser); 
     }
+       if(logInFormEl) {
+        logInFormEl.addEventListener("submit", loginUser) }
 
+          if(starterForm) {
+      document.getElementById("addFlag").addEventListener("click", createStarter);
+    }
    
     }
 
@@ -66,7 +74,7 @@ function init() {
 
        try {
 
-        const resp = await fetch("http://127.0.0.1:3001/api/login", {
+        const resp = await fetch("http://127.0.0.1:3000/api/login", {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -107,7 +115,7 @@ function init() {
             password:password
             }
 
-            const response = await fetch ("http://127.0.0.1:3001/api/register", {
+            const response = await fetch ("http://127.0.0.1:3000/api/register", {
                 method: "POST",
                 headers: {
                     "content-type": "Application/json"
@@ -118,3 +126,48 @@ function init() {
             console.log(data);
             
         }
+
+
+
+
+        async function createStarter (e){
+
+            e.preventDefault();
+            let sNameEl=document.getElementById("sName")
+            let sPriceEl=document.getElementById("sPrice")
+            let sDescriptionEl=document.getElementById("sDescription")
+     
+
+            let sName=sNameEl.value
+            let sPrice=sPriceEl.value
+            let sDescription=sDescriptionEl.value
+        
+
+            let starter = {  
+            sName: sName,
+            sPrice: sPrice,
+            sDescription: sDescription,
+            }
+            const token = localStorage.getItem("user_token")
+
+            try {const response = await fetch ("http://127.0.0.1:3000/api/starters", {
+                method: "POST",
+                headers: {
+                    "content-type": "Application/json",
+                    "authorization":"Bearer " + token
+                },
+                body: JSON.stringify(starter)
+            })
+
+            if(response.ok) {
+            const data= await response.json();
+            console.log(data);
+            
+        
+        } }catch(error) {
+
+            console.log("går ej att lägga till starter" +error);
+            
+        }
+    }
+
