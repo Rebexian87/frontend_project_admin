@@ -2,20 +2,29 @@ let menuEl=document.getElementById("headmenu");
 
 let logInFormEl =document.getElementById("logInForm")
 
+let registerFormEl =document.getElementById("registerForm")
+
+let starterFormEl =document.getElementById("starterForm")
+
+window.onload=init;
 function init() {
     changeMenu()
- 
+    getStarters ()
       
  
-    if(registerForm) {
+    if(registerFormEl) {
+
+        
        document.getElementById("submits").addEventListener("click", createUser); 
     }
        if(logInFormEl) {
         logInFormEl.addEventListener("submit", loginUser) }
 
-          if(starterForm) {
-      document.getElementById("addFlag").addEventListener("click", createStarter);
+          if(starterFormEl) {
+      document.getElementById("addStarter").addEventListener("click", createStarter);
     }
+
+    
    
     }
 
@@ -169,5 +178,100 @@ function init() {
             console.log("går ej att lägga till starter" +error);
             
         }
+        getStarters()
     }
 
+async function getStarters (){
+
+       try {const response = await fetch ("http://127.0.0.1:3000/api/starters")
+        if(response.ok) {
+            const data= await response.json();
+            console.log(data);
+            displayStarters(data) }} catch {
+            console.log("fel");}          
+        
+     
+    }
+
+
+async function displayStarters (data) {
+        let starters = document.getElementById("starters")
+        starters.innerHTML="";
+
+
+        data.forEach(starter => {
+            let id1=(starter.id+1)
+            let id2=starter.id
+
+            // <td>${id2}</td>
+
+            let trEl=document.createElement("tr")
+
+            let td1El=document.createElement("td")
+            td1El.textContent=(starter.sName)
+            let td2El=document.createElement("td")
+            td2El.textContent=(starter.sPrice)
+             let td3El=document.createElement("td")
+            td3El.textContent=(starter.sDescription)
+            trEl.appendChild(td1El)
+            trEl.appendChild(td2El)
+            trEl.appendChild(td3El)
+            starters.appendChild(trEl)
+            let button1=document.createElement("button")
+            let td4El=document.createElement("td")
+            trEl.appendChild(td4El)
+            td4El.appendChild(button1)
+            button1.setAttribute('id',starter.id)
+            let text1=document.createTextNode("Ta bort")
+            button1.appendChild(text1)
+            let button2=document.createElement("button")
+            let td5El=document.createElement("td")
+            trEl.appendChild(td5El)
+            td5El.appendChild(button2)
+            let text2=document.createTextNode("Ändra/Justera")
+            button2.appendChild(text2)
+        
+             button1.addEventListener("click",deleteStarter)
+               button2.addEventListener("click",updateStarter)
+        
+        })
+
+           
+
+
+        //   starters.innerHTML+=  `<tr><td>${starter.sName}</td><td>${starter.sPrice}</td><td>${starter.sDescription}</td><td><button id= ${id1}>Ta bort</button></td></tr>`
+            //let newElTd= document.createElement ("td")      //Skapar nytt element (li)
+          //  newElTd.textContent= (starter.sName+ " " + starter.sPrice+ " "+ starter.sDescription ) //Skapar texten till det som visas i listan
+
+            
+             //newElLi.setAttribute('id', flag.id) //Skapar attributet id
+        //    newElTD.appendChild(newText) //Lägger newText som "barn" till newElLi
+      //      starters.appendChild(newElTd) // Lägger newElLi som "barn" till expEl
+    //   id1.addEventListener("click", deleteStarter)
+    }
+        
+
+     
+
+    async function deleteStarter(e){
+        let id=(e.target.id)
+        console.log(id);
+        
+
+             const response = await fetch(`http://127.0.0.1:3000/api/starters/${id}`, 
+        
+        { method: "DELETE",
+          headers: {
+                    "content-type": "Application/json"
+                 },
+          });
+          const data= await response.json();
+             console.log(data);
+           
+              getStarters()
+
+    }
+
+    function updateStarter() {
+        
+    }

@@ -1,3 +1,7 @@
+* {
+    margin: 0; 
+}
+
 /*huvudmeny*/
 .headmenu {
   
@@ -51,5 +55,35 @@ li {
 width: 80vh;
 
 
+}
+table { 
+  
+    margin-top: 5%;
+    font-size: 1.0em;
+    line-height: 120%;
+}
+
+th {
+    color: blue;
+     /* cursor: pointer; */
+    text-align: left;
+    padding: 0.3em;
+}
+
+/*Every other row gets  a different color*/
+
+ table tbody tr:nth-of-type(even) {
+    background-color: rgb(241, 239, 239);
+}
+ table tbody tr:nth-of-type(odd) {
+    background-color: rgb(204, 226, 233);
+}
+
+td {
+    border: 1px solid black;
+     margin-left: 5%;
+    padding: 0.3em;
+
+    
 }
 
