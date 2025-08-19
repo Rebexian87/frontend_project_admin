@@ -9,7 +9,11 @@ let starterFormEl =document.getElementById("starterForm")
 window.onload=init;
 function init() {
     changeMenu()
-    getStarters ()
+
+    let starterEl=document.getElementById("starterForm")
+
+    if(starterEl) {
+    getStarters()}
       
  
     if(registerFormEl) {
@@ -23,7 +27,8 @@ function init() {
           if(starterFormEl) {
       document.getElementById("addStarter").addEventListener("click", createStarter);
     }
-
+    formEl=document.getElementById("form").style.display="none"
+    h2_2El=document.getElementById("h2_2").style.display="none"
     
    
     }
@@ -199,9 +204,9 @@ async function displayStarters (data) {
         starters.innerHTML="";
 
 
+       if(starters) {
         data.forEach(starter => {
-            let id1=(starter.id+1)
-            let id2=starter.id
+           
 
             // <td>${id2}</td>
 
@@ -230,11 +235,12 @@ async function displayStarters (data) {
             td5El.appendChild(button2)
             let text2=document.createTextNode("Ändra/Justera")
             button2.appendChild(text2)
+            button2.setAttribute('id',starter.id)
         
-             button1.addEventListener("click",deleteStarter)
-               button2.addEventListener("click",updateStarter)
+            button1.addEventListener("click",deleteStarter)
+            button2.addEventListener("click",getStarterWithId) 
         
-        })
+        })}
 
            
 
@@ -268,10 +274,156 @@ async function displayStarters (data) {
           const data= await response.json();
              console.log(data);
            
-              getStarters()
+            getStarters()
 
     }
 
-    function updateStarter() {
+    async function getStarterWithId(e) {
         
+        let id=e.target.id
+        console.log(id);
+
+              try {const response = await fetch(`http://127.0.0.1:3000/api/starters/${id}`)
+        //            { method: "GET",
+        //   headers: {
+        //             "content-type": "Application/json",
+        //             "accept":"Application/json"
+        //          },
+        //   });
+
+            if(response.ok) {
+                  const data= await response.json();
+                    fillinForm(data)
+        
+            //  return data
+            
+            }
+
+                 }catch{console.log("fel");
+             }
+       
+        
+        // try{
+        //      const response = await fetch(`http://127.0.0.1:3000/api/starters/${id}`)
+                    
+        //      if(!response.ok) {
+        //         console.log("felfelfel");
+                
+        //      }
+        
+        // { method: "GET",
+        //   headers: {
+        //         "accept":"application/json",
+        //             "content-type": "Application/json"
+        //          }})
+        //    { method: "GET",
+        //   headers: {
+        //             "content-type": "Application/json"
+        //          },
+        //   });
+                //    if(response.ok) {
+                //     const data= await response.json();
+           
+                //     console.log(data);} }catch(error) {
+
+                //     console.log("går ej att lägga till starter" +error);}
+                
+            // console.log(data);
+        
+            
+            //   button2.addEventListener("click",updateStarter)
+        
+     
     }
+
+
+       async function  fillinForm(data)  {
+            // console.log(id);
+            formEl=document.getElementById("form")
+            formEl=document.getElementById("form").style.display="block"
+                h2_2El=document.getElementById("h2_2").style.display="block"
+  
+            // let idEl=document.getElementById("id")  
+            let nameEl = document.getElementById("name")
+            let priceEl = document.getElementById("price")
+            let descriptionEl = document.getElementById("description")
+            
+            // idEl.value=data.id
+            nameEl.value=data.sName
+            priceEl.value=data.sPrice
+            descriptionEl.value=data.sDescription
+            console.log(data); 
+
+            let h2El=document.getElementById("h2")
+            let text1=document.createTextNode(data.id)
+            h2El.appendChild(text1)
+            // let changeEl=document.getElementById("change")
+
+            //  let id=data.id
+            // console.log(id);
+            // buttonEl=document.createElement("button")
+
+            buttonEl=document.getElementById("change")
+        
+            // buttonEl.setAttribute("id",data.id)
+
+        
+            
+            buttonEl.addEventListener("click", changeForm)
+
+            }
+
+            async function changeForm(e) {
+                       e.preventDefault();
+                        let h2El=document.getElementById("h2")
+                        let id=h2El.textContent
+                console.log(h2El.textContent);
+                  formEl=document.getElementById("form")
+            formEl=document.getElementById("form").style.display="block"
+
+
+                // id=e.target.id
+            
+        //     let idEl=document.getElementById("id")    
+             let sNameEl=document.getElementById("name")
+             let sPriceEl=document.getElementById("price")
+             let sDescriptionEl=document.getElementById("description")
+     
+        //      let id=idEl.value
+             let sName=sNameEl.value
+            let sPrice=sPriceEl.value
+            let sDescription=sDescriptionEl.value
+        
+
+            let starter = {  
+           sName: sName,
+             sPrice: sPrice,
+             sDescription: sDescription,
+             }
+        //     // const token = localStorage.getItem("user_token")
+
+            try {const response = await fetch (`http://127.0.0.1:3000/api/starters/${id}`, {
+                method: "PUT",
+               headers: {
+                    "content-type": "Application/json",
+                    //"authorization":"Bearer " + token
+             },
+                body: JSON.stringify(starter)
+            })
+
+             if(response.ok) {
+             const data= await response.json();
+            console.log(data);
+            
+        
+         } }catch(error) {
+
+           console.log("går ej att lägga till starter" +error);
+            
+         }
+         getStarters()
+                
+
+            }
+
+    
