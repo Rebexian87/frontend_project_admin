@@ -155,8 +155,8 @@ function init() {
             let sName=sNameEl.value
             let sPrice=sPriceEl.value
             let sDescription=sDescriptionEl.value
-        
-
+            
+            
             let starter = {  
             sName: sName,
             sPrice: sPrice,
@@ -176,6 +176,8 @@ function init() {
             if(response.ok) {
             const data= await response.json();
             console.log(data);
+
+        
             
         
         } }catch(error) {
@@ -183,7 +185,12 @@ function init() {
             console.log("går ej att lägga till starter" +error);
             
         }
+         sNameEl.value=""
+            sPriceEl.value=""
+            sDescriptionEl.value=""
+           
         getStarters()
+
     }
 
 async function getStarters (){
@@ -202,8 +209,11 @@ async function getStarters (){
 async function displayStarters (data) {
         let starters = document.getElementById("starters")
         starters.innerHTML="";
+      
 
-
+        if(data.length==0) {
+            starters.innerHTML=`<tr><td>Finns inga förrätter för tillfället</td></tr>`
+        }
        if(starters) {
         data.forEach(starter => {
            
@@ -421,6 +431,10 @@ async function displayStarters (data) {
            console.log("går ej att lägga till starter" +error);
             
          }
+
+            sNameEl.value=""
+            sPriceEl.value=""
+            sDescriptionEl.value=""
          getStarters()
                 
 
