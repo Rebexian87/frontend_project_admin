@@ -21,18 +21,22 @@
         </nav>  
         </header>
 <div class="container">
-
+        <div class="position1">
         <h1>Här kan du lägga till, ta bort och ändra på vår meny.</h1>
-        <section>
+        </div>
+
+        <section class="position2">
         <h2>Vad vill du justera på meny?</h2>
-        <button>Förrätter</button>
-        <button>Huvudrätter</button>
+        <button id="buttonStarters">Förrätter</button>
+        <button id="buttonMainCourses">Huvudrätter</button>
         <button>Efterrätter</button>
         <button>Vinlista</button>
         </section>
 
-        <h2>Lägg till förrätter</h2>
+             <section id="sectionstarterForm"class="position3">
+        
         <form id="starterForm">
+             <h2>Lägg till förrätter</h2>
             <label for="sName">Namn på förrätt</label> <br>
             <input type="text" name="sName" id="sName"><br>
             <label for="sPrice">Pris på förrätt</label> <br>
@@ -43,7 +47,7 @@
 
         </form>
 
-        <h2>Vill du iställer ta bort eller ändra en specifik förrätt?</h2>
+             <h2>Vill du iställer ta bort eller ändra en specifik förrätt?</h2>
             <table id="tableStarters">
                 <thead>
                 <tr>
@@ -60,10 +64,48 @@
                 </tbody>
             </table>
             <ul ></ul>
-        </div>
-            <div>
-              <h2><span id="h2_2">Denna rätt har id </span><span id="h2"></span></h2>
-              <form id="form">
+            
+
+        
+        </section>
+ 
+     <section class="position5" id="sectionMainCourseForm">
+               
+              <h2>Lägg till Huvudrätter</h2>
+        <form id="mainCourseForm">
+            <label for="mainCourseName">Namn på huvudrätt</label> <br>
+            <input type="text" name="mainCourseName" id="mainCourseName"><br>
+            <label for="mainCoursePrice">Pris på huvudrätt</label> <br>
+            <input type="text" name="mainCoursePrice" id="mainCoursePrice"><br>
+            <label for="mainCourseDescription">Beskrivning av huvudrätt</label> <br>
+            <textarea rows="5" cols="40" id="mainCourseDescription"></textarea><br>            
+            <input type="submit" id="addMainCourse" value="Lägg till">
+
+        </form>
+
+                   <h2>Vill du iställer ta bort eller ändra en specifik huvudrätt?</h2>
+            <table id="tablemainCourses">
+                <thead>
+                <tr>
+                    <th>Namn</th>
+                    <th>Pris</th>
+                    <th>Beskrivning</th>
+                </tr>
+                </thead>
+
+                <tbody id="mainCourses">
+                    <tr >
+
+                    </tr>
+                </tbody>
+            </table>
+            <ul ></ul>
+        </section>
+
+
+            <section id="form" class="position100">
+              <h2><span id="h2_2"></span><span id="h2"></span></h2>
+              <form >
 
                 <!-- <p id="id"></p> <br> -->
             <!-- <label for="id">Namn på förrätt</label> <br>
@@ -77,7 +119,55 @@
             <button id="change">  Ändra</button>
 
         </form>
-        </div>
+    </section>
+              </div>
 </body>
 
 </html>
+
+
+
+
+    <!-- <section class="position4" id="sectionstarterTable"> -->
+        <!-- <h2>Vill du iställer ta bort eller ändra en specifik förrätt?</h2>
+            <table id="tableStarters">
+                <thead>
+                <tr>
+                    <th>Namn</th>
+                    <th>Pris</th>
+                    <th>Beskrivning</th>
+                </tr>
+                </thead>
+
+                <tbody id="starters">
+                    <tr >
+
+                    </tr>
+                </tbody>
+            </table>
+            <ul ></ul> -->
+  <!-- </section> -->
+
+
+  
+          <!-- <section class="position6" id="sectionmainCourseTable">
+
+                <h2>Vill du iställer ta bort eller ändra en specifik huvudrätt?</h2>
+            <table id="tablemainCourses">
+                <thead>
+                <tr>
+                    <th>Namn</th>
+                    <th>Pris</th>
+                    <th>Beskrivning</th>
+                </tr>
+                </thead>
+
+                <tbody id="mainCourses">
+                    <tr >
+
+                    </tr>
+                </tbody>
+            </table>
+            <ul ></ul>
+
+            </section> -->
