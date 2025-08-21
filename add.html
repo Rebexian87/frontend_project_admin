@@ -9,7 +9,7 @@
      <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-           <header class="position1">
+    <header class="position1">
         <nav>
             
             <ul id="headmenu">
@@ -19,35 +19,37 @@
      
             </ul>
         </nav>  
-        </header>
+    </header>
+
 <div class="container">
+
         <div class="position1">
-        <h1>Här kan du lägga till, ta bort och ändra på vår meny.</h1>
+            <h1>Här kan du lägga till, ta bort och ändra på vår meny.</h1>
         </div>
 
         <section class="position2">
-        <h2>Vad vill du justera på meny?</h2>
-        <button id="buttonStarters">Förrätter</button>
-        <button id="buttonMainCourses">Huvudrätter</button>
-        <button>Efterrätter</button>
-        <button>Vinlista</button>
+            <h2>Vad vill du justera på meny?</h2>
+            <button id="buttonStarters">Förrätter</button>
+            <button id="buttonMainCourses">Huvudrätter</button>
+            <button id="buttonDessert">Efterrätter</button>
+            <button id="buttonWine">Vinlista</button>
         </section>
 
-             <section id="sectionstarterForm"class="position3">
+        <section id="sectionstarterForm"class="position3">
         
-        <form id="starterForm">
-             <h2>Lägg till förrätter</h2>
-            <label for="sName">Namn på förrätt</label> <br>
-            <input type="text" name="sName" id="sName"><br>
-            <label for="sPrice">Pris på förrätt</label> <br>
-            <input type="text" name="sPrice" id="sPrice"><br>
-            <label for="sDescription">Beskrivning av förrätt</label> <br>
-            <textarea rows="5" cols="40" id="sDescription"></textarea><br>            
-            <input type="submit" id="addStarter" value="Lägg till">
+            <form id="starterForm">
+                <h2>Lägg till förrätter</h2>
+                <label for="sName">Namn på förrätt</label> <br>
+                <input type="text" name="sName" id="sName"><br>
+                <label for="sPrice">Pris på förrätt</label> <br>
+                <input type="text" name="sPrice" id="sPrice"><br>
+                <label for="sDescription">Beskrivning av förrätt</label> <br>
+                <textarea rows="5" cols="40" id="sDescription"></textarea><br>            
+                <input type="submit" id="addStarter" value="Lägg till">
+            </form>
 
-        </form>
-
-             <h2>Vill du iställer ta bort eller ändra en specifik förrätt?</h2>
+            <h2>Vill du iställer ta bort eller ändra en specifik förrätt?</h2>
+            
             <table id="tableStarters">
                 <thead>
                 <tr>
@@ -62,28 +64,41 @@
 
                     </tr>
                 </tbody>
-            </table>
-            <ul ></ul>
+            </table>                     
+                    
+             
+            <form id="form" class="position100">
+                <h2><span id="h2_2"></span><span id="h2"></span></h2>
             
+                <label for="sname">Namn på förrätt</label> <br>
+                <input type="text" name="sname" id="sname"><br>
+                <label for="sprice">Pris på förrätt</label> <br>
+                <input type="text" name="sprice" id="sprice"><br>
+                <label for="sdescription">Beskrivning av förrätt</label><br>
+                <textarea rows="5" cols="40" id="sdescription"></textarea><br>            
+                <button id="schange">  Ändra</button>
 
+            </form>
+        </section>
         
         </section>
  
-     <section class="position5" id="sectionMainCourseForm">
+        <section class="position5" id="sectionMainCourseForm">
                
-              <h2>Lägg till Huvudrätter</h2>
-        <form id="mainCourseForm">
-            <label for="mainCourseName">Namn på huvudrätt</label> <br>
-            <input type="text" name="mainCourseName" id="mainCourseName"><br>
-            <label for="mainCoursePrice">Pris på huvudrätt</label> <br>
-            <input type="text" name="mainCoursePrice" id="mainCoursePrice"><br>
-            <label for="mainCourseDescription">Beskrivning av huvudrätt</label> <br>
-            <textarea rows="5" cols="40" id="mainCourseDescription"></textarea><br>            
-            <input type="submit" id="addMainCourse" value="Lägg till">
+              
+            <form id="mainCourseForm">
+                <h2>Lägg till Huvudrätter</h2>
+                <label for="mainCourseName">Namn på huvudrätt</label> <br>
+                <input type="text" name="mainCourseName" id="mainCourseName"><br>
+                <label for="mainCoursePrice">Pris på huvudrätt</label> <br>
+                <input type="text" name="mainCoursePrice" id="mainCoursePrice"><br>
+                <label for="mainCourseDescription">Beskrivning av huvudrätt</label> <br>
+                <textarea rows="5" cols="40" id="mainCourseDescription"></textarea><br>            
+                <input type="submit" id="addMainCourse" value="Lägg till">
+            </form>
 
-        </form>
-
-                   <h2>Vill du iställer ta bort eller ändra en specifik huvudrätt?</h2>
+                <h2>Vill du iställer ta bort eller ändra en specifik huvudrätt?</h2>
+            
             <table id="tablemainCourses">
                 <thead>
                 <tr>
@@ -99,28 +114,122 @@
                     </tr>
                 </tbody>
             </table>
-            <ul ></ul>
+           
+
+            <form id="mCform" class="position100">
+                <h2><span id="mCh2_2"></span><span id="mCh2"></span></h2>            
+                <label for="mCame">Namn på förrätt</label> <br>
+                <input type="text" name="mCname" id="mCname"><br>
+                <label for="mCprice">Pris på förrätt</label> <br>
+                <input type="text" name="mCprice" id="mCprice"><br>
+                <label for="mCdescription">Beskrivning av förrätt</label><br>
+                <textarea rows="5" cols="40" id="mCdescription"></textarea><br>            
+                <button id="mCchange">  Ändra</button>
+            </form>
+
+        </section>
+<!--here starts desserts-->
+
+        <section class="position5" id="sectionDessertForm">
+               
+              
+            <form id="dessertForm">
+                <h2>Lägg till efterrätt</h2>
+                <label for="dessertName">Namn på efterrätt</label> <br>
+                <input type="text" name="dessertName" id="dessertName"><br>
+                <label for="dessertPrice">Pris på efterrätt</label> <br>
+                <input type="text" name="dessertPrice" id="dessertPrice"><br>
+                <label for="dessertDescription">Beskrivning av efterrätt</label> <br>
+                <textarea rows="5" cols="40" id="dessertDescription"></textarea><br>            
+                <input type="submit" id="addDessert" value="Lägg till">
+            </form>
+
+                <h2>Vill du iställer ta bort eller ändra en specifik efterrätt?</h2>
+            
+            <table id="tableDesserts">
+                <thead>
+                <tr>
+                    <th>Namn</th>
+                    <th>Pris</th>
+                    <th>Beskrivning</th>
+                </tr>
+                </thead>
+
+                <tbody id="desserts">
+                    <tr>
+
+                    </tr>
+                </tbody>
+            </table>
+           
+
+            <form id="dform" class="position100">
+                <h2><span id="dh2_2"></span><span id="dh2"></span></h2>            
+                <label for="dname">Namn på förrätt</label> <br>
+                <input type="text" name="dname" id="dname"><br>
+                <label for="dprice">Pris på förrätt</label> <br>
+                <input type="text" name="dprice" id="dprice"><br>
+                <label for="ddescription">Beskrivning av förrätt</label><br>
+                <textarea rows="5" cols="40" id="ddescription"></textarea><br>            
+                <button id="dchange">  Ändra</button>
+            </form>
+
         </section>
 
 
-            <section id="form" class="position100">
-              <h2><span id="h2_2"></span><span id="h2"></span></h2>
-              <form >
+        
+        <section class="position5" id="sectionWineForm">
+               
+              
+            <form id="wineForm">
+                <h2>Lägg till vinsort</h2>
+                <label for="wineName">Namn på vinsort</label> <br>
+                <input type="text" name="wineName" id="wineName"><br>
+                <label for="winePrice">Pris på vinsort</label> <br>
+                <input type="text" name="winePrice" id="winePrice"><br>
+                <label for="winePrice2">Pris på vinsort</label> <br>
+                <input type="text" name="winePrice2" id="winePrice2"><br>
+                <label for="wineDescription">Beskrivning av vinsort</label> <br>
+                <textarea rows="5" cols="40" id="wineDescription"></textarea><br>            
+                <input type="submit" id="addWine" value="Lägg till">
+            </form>
 
-                <!-- <p id="id"></p> <br> -->
-            <!-- <label for="id">Namn på förrätt</label> <br>
-            <input type="text" name="id" id="id"><br> -->
-            <label for="name">Namn på förrätt</label> <br>
-            <input type="text" name="name" id="name"><br>
-            <label for="price">Pris på förrätt</label> <br>
-            <input type="text" name="price" id="price"><br>
-            <label for="description">Beskrivning av förrätt</label><br>
-            <textarea rows="5" cols="40" id="description"></textarea><br>            
-            <button id="change">  Ändra</button>
+                <h2>Vill du iställer ta bort eller ändra en specifik vinsort?</h2>
+            
+            <table id="tableWine">
+                <thead>
+                <tr>
+                    <th>Namn</th>
+                    <th>Pris</th>
+                    <th>Beskrivning</th>
+                </tr>
+                </thead>
 
-        </form>
-    </section>
-              </div>
+                <tbody id="wine">
+                    <tr>
+
+                    </tr>
+                </tbody>
+            </table>
+           
+
+            <form id="wform" class="position100">
+                <h2><span id="wh2_2"></span><span id="wh2"></span></h2>            
+                <label for="wname">Namn på förrätt</label> <br>
+                <input type="text" name="wname" id="wname"><br>
+                <label for="wprice">Pris på förrätt</label> <br>
+                <input type="text" name="wprice" id="wprice"><br>
+                 <label for="wprice2">Pris på förrätt</label> <br>
+                <input type="text" name="wprice2" id="wprice2"><br>
+                <label for="wdescription">Beskrivning av förrätt</label><br>
+                <textarea rows="5" cols="40" id="wdescription"></textarea><br>            
+                <button id="wchange">  Ändra</button>
+            </form>
+
+        </section>
+
+
+    </div>
 </body>
 
 </html>

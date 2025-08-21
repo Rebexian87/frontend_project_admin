@@ -8,6 +8,11 @@ let starterFormEl =document.getElementById("starterForm")
 
 let mainCourseFormEl =document.getElementById("mainCourseForm") 
 
+let dessertFormEl =document.getElementById("dessertForm") 
+
+let wineFormEl =document.getElementById("wineForm") 
+
+
 window.onload=init;
 function init() {
     changeMenu()
@@ -20,6 +25,18 @@ function init() {
     
     if(mainCourseFormEl) {
     getmainCourses()}
+
+    if (dessertFormEl) {
+        getDesserts()
+        
+    }
+
+    if (wineFormEl) {
+        getWine()
+        
+    }
+
+    
       
  
     if(registerFormEl) {
@@ -39,27 +56,87 @@ function init() {
     }
     formEl=document.getElementById("form").style.display="none"
     // h2_2El=document.getElementById("h2_2").style.display="none"
+    mCformEl=document.getElementById("mCform").style.display="none"
+    dformEl=document.getElementById("dform").style.display="none"
+    wformEl=document.getElementById("wform").style.display="none"
 
     let sectionstarterFormEl=document.getElementById("sectionstarterForm")
     sectionstarterFormEl.style.display="none"
-    //  let sectionstarterTableEl=document.getElementById("sectionstarterTable")
-    // sectionstarterTableEl.style.display="none"
+
     let sectionMainCourseFormEl=document.getElementById("sectionMainCourseForm")
     sectionMainCourseFormEl.style.display="none"
+
+    let sectionDessertFormEl=document.getElementById("sectionDessertForm")
+    sectionDessertFormEl.style.display="none"
+
+    let sectionWineFormEl=document.getElementById("sectionWineForm")
+    sectionWineFormEl.style.display="none"
    
-    // let sectionmainCourseTableEl=document.getElementById("sectionmainCourseTable")
-    // sectionmainCourseTableEl.style.display="none"
+       if(sectionDessertFormEl) {
+      document.getElementById("addDessert").addEventListener("click", createDessert);
+    }
+
+    if(sectionWineFormEl) {
+    document.getElementById("addWine").addEventListener("click", createWine);
+    }
 
     let buttonStarters=document.getElementById("buttonStarters")
     buttonStarters.addEventListener("click", showStarters)
+    let buttonMainCourses=document.getElementById("buttonMainCourses")
+    buttonMainCourses.addEventListener("click", showMainCourses)
+    let buttonDessert=document.getElementById("buttonDessert")
+    buttonDessert.addEventListener("click", showDesserts)
+    let buttonWine=document.getElementById("buttonWine")
+    buttonWine.addEventListener("click", showWine)
       
 }
 
     function showStarters() {
-            let sectionstarterFormEl=document.getElementById("sectionstarterForm")
-            sectionstarterFormEl.style.display="block"
+        let sectionMainCourseFormEl=document.getElementById("sectionMainCourseForm")
+        sectionMainCourseFormEl.style.display="none"
+        let sectionDessertFormEl=document.getElementById("sectionDessertForm")
+        sectionDessertFormEl.style.display="none"
+        let sectionWineFormEl=document.getElementById("sectionWineForm")
+        sectionWineFormEl.style.display="none"
+        let sectionstarterFormEl=document.getElementById("sectionstarterForm")
+        sectionstarterFormEl.style.display="block"
             // let sectionstarterTableEl=document.getElementById("sectionstarterTable")
             // sectionstarterTableEl.style.display="block"
+    }
+    function showMainCourses() {
+        let sectionstarterFormEl=document.getElementById("sectionstarterForm")
+        sectionstarterFormEl.style.display="none"
+        let sectionDessertFormEl=document.getElementById("sectionDessertForm")
+        sectionDessertFormEl.style.display="none"
+        let sectionWineFormEl=document.getElementById("sectionWineForm")
+        sectionWineFormEl.style.display="none"        
+        let sectionMainCourseFormEl=document.getElementById("sectionMainCourseForm")
+        sectionMainCourseFormEl.style.display="block"
+    }
+
+    function showDesserts() {
+        let sectionstarterFormEl=document.getElementById("sectionstarterForm")
+        sectionstarterFormEl.style.display="none"
+        let sectionMainCourseFormEl=document.getElementById("sectionMainCourseForm")
+        sectionMainCourseFormEl.style.display="none"
+        let sectionWineFormEl=document.getElementById("sectionWineForm")
+        sectionWineFormEl.style.display="none"
+        let sectionDessertFormEl=document.getElementById("sectionDessertForm")
+        sectionDessertFormEl.style.display="block"
+
+    }
+
+    function showWine(){
+        let sectionstarterFormEl=document.getElementById("sectionstarterForm")
+        sectionstarterFormEl.style.display="none"
+        let sectionMainCourseFormEl=document.getElementById("sectionMainCourseForm")
+        sectionMainCourseFormEl.style.display="none"     
+        let sectionDessertFormEl=document.getElementById("sectionDessertForm")
+        sectionDessertFormEl.style.display="none"
+        let sectionWineFormEl=document.getElementById("sectionWineForm")
+        sectionWineFormEl.style.display="block"
+
+
     }
 
     function changeMenu(){
@@ -356,9 +433,9 @@ async function displayStarters (data) {
                 //h2_2El.style.display="block"
   
                        //Hämtar in data från HTML
-                let nameEl = document.getElementById("name")
-                let priceEl = document.getElementById("price")
-                let descriptionEl = document.getElementById("description")
+                let nameEl = document.getElementById("sname")
+                let priceEl = document.getElementById("sprice")
+                let descriptionEl = document.getElementById("sdescription")
             
                 //fyller i värdet i inputfält
                 nameEl.value=data.sName
@@ -368,14 +445,16 @@ async function displayStarters (data) {
 
                 let h2El=document.getElementById("h2") 
                 let h2_2El=document.getElementById("h2_2")
-                let text1=document.createTextNode(data.id) //Lägger till id i h2
-                let text2=document.createTextNode("Justera rätt "+data.sName+", nr: ") //Lägger till id i h2
-                h2El.appendChild(text1)
-                h2_2El.appendChild(text2)
+                h2El.textContent=data.id
+                h2_2El.textContent=("Justera "+data.sName+", rätt nr: ") 
+                //let text1=document.createTextNode(data.id) //Lägger till id i h2
+                //let text2=document.createTextNode("Justera "+data.sName+", rätt nr: ") //Lägger till id i h2
+                //h2El.appendChild(text1)
+                //h2_2El.appendChild(text2)
 
     
 
-                    buttonEl=document.getElementById("change")     
+                    buttonEl=document.getElementById("schange")     
                     buttonEl.addEventListener("click", changeForm) //vid click anropas funktionen changeform
 
             }
@@ -392,9 +471,9 @@ async function displayStarters (data) {
                 formEl=document.getElementById("form").style.display="block" //Visar formulär
 
                     //Hämtar in data från HTML
-                let sNameEl=document.getElementById("name") 
-                let sPriceEl=document.getElementById("price")
-                let sDescriptionEl=document.getElementById("description")
+                let sNameEl=document.getElementById("sname") 
+                let sPriceEl=document.getElementById("sprice")
+                let sDescriptionEl=document.getElementById("sdescription")
      
                     //Värden i inputfält (som man ändrar som man vill)
                 let sName=sNameEl.value
@@ -606,15 +685,15 @@ async function displayStarters (data) {
 
       async function  fillinFormMainCourse(data)  {
          
-                let formEl=document.getElementById("form") 
+                let formEl=document.getElementById("mCform") 
                 formEl.style.display="block"                //visar form
                // let h2_2El=document.getElementById("h2_2") //visar h2
                 //h2_2El.style.display="block"
   
                        //Hämtar in data från HTML
-                let nameEl = document.getElementById("name")
-                let priceEl = document.getElementById("price")
-                let descriptionEl = document.getElementById("description")
+                let nameEl = document.getElementById("mCname")
+                let priceEl = document.getElementById("mCprice")
+                let descriptionEl = document.getElementById("mCdescription")
             
                 //fyller i värdet i inputfält
                 nameEl.value=data.mainCourseName
@@ -622,33 +701,38 @@ async function displayStarters (data) {
                 descriptionEl.value=data.mainCourseDescription
                 console.log(data); 
 
-                let h2El=document.getElementById("h2") 
-                let h2_2El=document.getElementById("h2_2")
-                let text1=document.createTextNode(data.id) //Lägger till id i h2
-                let text2=document.createTextNode("Justera rätt"+data.mainCourseName+", nr: ") //Lägger till id i h2
+                let h2El=document.getElementById("mCh2") 
+                let h2_2El=document.getElementById("mCh2_2")
+                h2El.textContent=data.id
+                h2_2El.textContent=("Justera "+data.mainCourseName+", rätt nr: ")
+                //let text1=document.createTextNode(data.id) //Lägger till id i h2
+                //let text2=document.createTextNode("Justera "+data.mainCourseName+", rätt nr: ") //Lägger till id i h2
 
-                h2El.appendChild(text1)
+                //h2El.appendChild(text1)
+                //h2_2El.appendChild(text2)
     
 
-                    buttonEl=document.getElementById("change")     
+                    buttonEl=document.getElementById("mCchange")     
                     buttonEl.addEventListener("click", changeFormMainCourse) //vid click anropas funktionen changeform
 
             }
 
+
+            
                 async function changeFormMainCourse(e) {
                 e.preventDefault();
-                let h2El=document.getElementById("h2")
-                let h2_2El=document.getElementById("h2_2")
+                let h2El=document.getElementById("mCh2")
+                let h2_2El=document.getElementById("mCh2_2")
                 let id=h2El.textContent //id för huvudrätten
                 console.log(h2El.textContent);
                     
-                formEl=document.getElementById("form")
-                formEl=document.getElementById("form").style.display="block" //Visar formulär
+                formEl=document.getElementById("mCform")
+                formEl=document.getElementById("mCform").style.display="block" //Visar formulär
 
                     //Hämtar in data från HTML
-                let mainCourseNameEl=document.getElementById("name") 
-                let mainCoursePriceEl=document.getElementById("price")
-                let mainCourseDescriptionEl=document.getElementById("description")
+                let mainCourseNameEl=document.getElementById("mCname") 
+                let mainCoursePriceEl=document.getElementById("mCprice")
+                let mainCourseDescriptionEl=document.getElementById("mCdescription")
      
                     //Värden i inputfält (som man ändrar som man vill)
                 let mainCourseName=mainCourseNameEl.value
@@ -660,10 +744,12 @@ async function displayStarters (data) {
                     mainCourseName: mainCourseName,
                     mainCoursePrice: mainCoursePrice,
                     mainCourseDescription: mainCourseDescription,
-                    }
+                    } 
 
         //     // const token = localStorage.getItem("user_token")
                     //Uppdaterar den specifika förrätten med PUT
+
+                    
             try {const response = await fetch (`http://127.0.0.1:3000/api/mainCourse/${id}`, {
                     method: "PUT",
                     headers: {
@@ -691,6 +777,541 @@ async function displayStarters (data) {
                 h2_2El.textContent=""
 
                 getmainCourses()               
+
+            }
+    
+/*här börjar dessert */
+
+                    //Funktion för att skapa förrätt
+        async function createDessert (e){
+
+            e.preventDefault();
+              //Hämtar från html-element
+            let dessertNameEl=document.getElementById("dessertName")
+            let dessertPriceEl=document.getElementById("dessertPrice")
+            let dessertDescriptionEl=document.getElementById("dessertDescription")
+     
+                //Hämtar värden från inputraderna
+            let dessertName=dessertNameEl.value
+            let dessertPrice=dessertPriceEl.value
+            let dessertDescription=dessertDescriptionEl.value
+            
+               //objekt för förrätt
+            let dessert = {  
+            dessertName: dessertName,
+            dessertPrice: dessertPrice,
+            dessertDescription: dessertDescription,
+            }
+            //Token från när man loggar in
+            const token = localStorage.getItem("user_token")
+
+            //POST- hämtar data
+            try {const response = await fetch ("http://127.0.0.1:3000/api/dessert", {
+                method: "POST",
+                headers: {
+                    "content-type": "Application/json",
+                    "authorization":"Bearer " + token
+                },
+                body: JSON.stringify(dessert)
+            })
+
+            if(response.ok) {
+            const data= await response.json();
+            console.log(data);
+
+        
+            
+        
+        } }catch(error) {
+
+            console.log("går ej att lägga till starter" +error);
+            
+        }
+
+        //Rensar formulär när man skapat förrätt
+            dessertNameEl.value=""
+            dessertPriceEl.value=""
+            dessertDescriptionEl.value=""
+           
+        getDesserts()
+
+    }
+
+           async function getDesserts (){
+
+        //Hämtar data alla starters
+        try {const response = await fetch ("http://127.0.0.1:3000/api/dessert")
+            if(response.ok) {
+            const data= await response.json();
+            console.log(data);
+            displayDesserts(data) }} catch {
+            console.log("fel");}          
+        
+     
+    }
+
+    async function displayDesserts(data) {
+        let desserts= document.getElementById("desserts")
+        desserts.innerHTML=""; //Rensar formulär
+      
+        //loopar igenom alla förrätter och visar i en tabell
+       if(desserts) {
+        data.forEach(dessert => {
+           
+
+            // <td>${id2}</td>
+
+            let trEl=document.createElement("tr")
+
+            let td1El=document.createElement("td")
+            td1El.textContent=(dessert.dessertName)
+            let td2El=document.createElement("td")
+            td2El.textContent=(dessert.dessertPrice)
+             let td3El=document.createElement("td")
+            td3El.textContent=(dessert.dessertDescription)
+            trEl.appendChild(td1El)
+            trEl.appendChild(td2El)
+            trEl.appendChild(td3El)
+            desserts.appendChild(trEl)
+            let button1=document.createElement("button")
+            let td4El=document.createElement("td")
+            trEl.appendChild(td4El)
+            td4El.appendChild(button1)
+            button1.setAttribute('id',dessert.id)
+            let text1=document.createTextNode("Ta bort")
+            button1.appendChild(text1)
+            let button2=document.createElement("button")
+            let td5El=document.createElement("td")
+            trEl.appendChild(td5El)
+            td5El.appendChild(button2)
+            let text2=document.createTextNode("Ändra/Justera")
+            button2.appendChild(text2)
+            button2.setAttribute('id',dessert.id)
+        
+            button1.addEventListener("click",deleteDessert)  //Vid klick anropas funktionen deleteStarter
+            button2.addEventListener("click",getDessertWithId)  //Vid klick anropas funktionen getStarterWithId
+        
+        })}
+
+  
+    }
+
+
+        
+        //Funktion för att deleta en starter
+    async function deleteDessert(e){
+        let id=(e.target.id)
+        console.log(id);
+        
+
+             const response = await fetch(`http://127.0.0.1:3000/api/dessert/${id}`, 
+        
+        { method: "DELETE",
+          headers: {
+                    "content-type": "Application/json"
+                 },
+          });
+          const data= await response.json();
+             console.log(data);
+           
+            getDesserts()
+
+    }
+
+        async function getDessertWithId(e) {
+        
+        let id=e.target.id
+        console.log(id);
+
+              try {const response = await fetch(`http://127.0.0.1:3000/api/dessert/${id}`)
+  
+
+            if(response.ok) {
+                  const data= await response.json();
+                    fillinFormDessert(data)
+        
+            //  return data
+            
+            }
+
+                 }catch{console.log("fel");
+             } }
+       
+      async function  fillinFormDessert(data)  {
+         
+                let formEl=document.getElementById("dform") 
+                formEl.style.display="block"                //visar form
+               // let h2_2El=document.getElementById("h2_2") //visar h2
+                //h2_2El.style.display="block"
+               
+  
+                       //Hämtar in data från HTML
+                let nameEl = document.getElementById("dname")
+                let priceEl = document.getElementById("dprice")
+                let descriptionEl = document.getElementById("ddescription")
+            
+                //fyller i värdet i inputfält
+                nameEl.value=data.dessertName
+                priceEl.value=data.dessertPrice
+                descriptionEl.value=data.dessertDescription
+                console.log(data); 
+
+                let h2El=document.getElementById("dh2") 
+                let h2_2El=document.getElementById("dh2_2")
+                h2El.textContent=data.id
+                h2_2El.textContent=("Justera "+data. dessertName+", rätt nr: ")
+               // let text1=document.createTextNode(data.id) //Lägger till id i h2
+               // let text2=document.createTextNode("Justera "+data. dessertName+", rätt nr: ") //Lägger till id i h2
+
+               // h2El.appendChild(text1)
+                //h2_2El.appendChild(text2)
+    
+
+                    buttonEl=document.getElementById("dchange")     
+                    buttonEl.addEventListener("click", changeFormDessert) //vid click anropas funktionen changeform
+
+            }
+        
+     
+   
+             async function changeFormDessert(e) {
+                e.preventDefault();
+                let h2El=document.getElementById("dh2")
+                let h2_2El=document.getElementById("dh2_2")
+                let id=h2El.textContent //id för huvudrätten
+                console.log(h2El.textContent);
+                    
+                formEl=document.getElementById("dform")
+                formEl=document.getElementById("dform").style.display="block" //Visar formulär
+
+                    //Hämtar in data från HTML
+                let dessertNameEl=document.getElementById("dname") 
+                let dessertPriceEl=document.getElementById("dprice")
+                let dessertDescriptionEl=document.getElementById("ddescription")
+     
+                    //Värden i inputfält (som man ändrar som man vill)
+                let dessertName=dessertNameEl.value
+                let dessertPrice=dessertPriceEl.value
+                let dessertDescription=dessertDescriptionEl.value
+        
+                    //objekt för förrätt
+                let dessert = {  
+                    dessertName: dessertName,
+                    dessertPrice: dessertPrice,
+                    dessertDescription: dessertDescription,
+                    } 
+
+        //     // const token = localStorage.getItem("user_token")
+                    //Uppdaterar den specifika förrätten med PUT
+
+                    
+            try {const response = await fetch (`http://127.0.0.1:3000/api/dessert/${id}`, {
+                    method: "PUT",
+                    headers: {
+                        "content-type": "Application/json",
+                    //"authorization":"Bearer " + token
+             },
+                body: JSON.stringify(dessert)
+            })
+
+                if(response.ok) {
+                const data= await response.json();
+                console.log(data);
+            
+        
+         } }catch(error) {
+
+                console.log("går ej att lägga till dessert" +error);
+            
+         }
+                //Rensar formulär
+                dessertNameEl.value=""
+                dessertPriceEl.value=""
+                dessertDescriptionEl.value=""
+                h2El.textContent=""
+                h2_2El.textContent=""
+
+                getDesserts()               
+
+            }
+    
+
+            /*här börjar wine */
+
+            
+            //Funktion för att skapa vin
+        async function createWine (e){
+
+            e.preventDefault();
+              //Hämtar från html-element
+            let wineNameEl=document.getElementById("wineName")
+            let winePriceEl=document.getElementById("winePrice")
+            let winePriceEl2=document.getElementById("winePrice2")
+            let wineDescriptionEl=document.getElementById("wineDescription")
+     
+                //Hämtar värden från inputraderna
+            let wineName=wineNameEl.value
+            let winePrice=winePriceEl.value
+            let winePrice2=winePriceEl2.value
+            let wineDescription=wineDescriptionEl.value
+            
+               //objekt för vin
+            let wine = {  
+            wineName: wineName,
+            winePrice: winePrice,
+            winePrice2: winePrice2,
+            wineDescription: wineDescription,
+            }
+            //Token från när man loggar in
+            const token = localStorage.getItem("user_token")
+
+            //POST- hämtar data
+            try {const response = await fetch ("http://127.0.0.1:3000/api/wine", {
+                method: "POST",
+                headers: {
+                    "content-type": "Application/json",
+                    "authorization":"Bearer " + token
+                },
+                body: JSON.stringify(wine)
+            })
+
+            if(response.ok) {
+            const data= await response.json();
+            console.log(data);
+
+        
+            
+        
+        } }catch(error) {
+
+            console.log("går ej att lägga till starter" +error);
+            
+        }
+
+        //Rensar formulär när man skapat vin
+            wineNameEl.value=""
+            winePriceEl.value=""
+            winePriceEl2.value=""
+            wineDescriptionEl.value=""
+           
+        getWine()
+
+    }
+
+       async function getWine(){
+
+        //Hämtar data alla starters
+        try {const response = await fetch ("http://127.0.0.1:3000/api/wine")
+            if(response.ok) {
+            const data= await response.json();
+            console.log(data);
+            displayWine(data) }} catch {
+            console.log("fel");}          
+        
+     
+    }
+
+    async function displayWine(data) {
+        let wines= document.getElementById("wine")
+        wines.innerHTML=""; //Rensar formulär
+
+        let wform= document.getElementById("wform")
+       
+      
+        //loopar igenom alla förrätter och visar i en tabell
+       if(wines) {
+        data.forEach(wine => {
+           
+
+            // <td>${id2}</td>
+
+            let trEl=document.createElement("tr")
+
+            let td1El=document.createElement("td")
+            td1El.textContent=(wine.wineName)
+            let td2El=document.createElement("td")
+            td2El.textContent=(wine.winePrice)
+            let td2_2El=document.createElement("td")
+            td2_2El.textContent=(wine.winePrice2)
+            let td3El=document.createElement("td")
+            td3El.textContent=(wine.wineDescription)
+            trEl.appendChild(td1El)
+            trEl.appendChild(td2El)
+            trEl.appendChild(td2_2El)
+            trEl.appendChild(td3El)
+            wines.appendChild(trEl)
+            let button1=document.createElement("button")
+            let td4El=document.createElement("td")
+            trEl.appendChild(td4El)
+            td4El.appendChild(button1)
+            button1.setAttribute('id',wine.id)
+            let text1=document.createTextNode("Ta bort")
+            button1.appendChild(text1)
+            let button2=document.createElement("button")
+            let td5El=document.createElement("td")
+            trEl.appendChild(td5El)
+            td5El.appendChild(button2)
+            let text2=document.createTextNode("Ändra/Justera")
+            button2.appendChild(text2)
+            button2.setAttribute('id',wine.id)
+        
+            button1.addEventListener("click",deleteWine)  //Vid klick anropas funktionen deleteStarter
+         
+            button2.addEventListener("click",getWineWithId)  //Vid klick anropas funktionen getStarterWithId
+        
+        })}
+
+  
+    }
+
+        //Funktion för att deleta en starter
+    async function deleteWine(e){
+        let id=(e.target.id)
+        console.log(id);
+               
+
+             const response = await fetch(`http://127.0.0.1:3000/api/wine/${id}`, 
+        
+        { method: "DELETE",
+          headers: {
+                    "content-type": "Application/json"
+                 },
+          });
+          const data= await response.json();
+             console.log(data);
+           
+            getWine()
+
+    }
+
+        async function getWineWithId(e) {
+           
+            
+        
+        let id=e.target.id
+        console.log(id);
+
+              try {const response = await fetch(`http://127.0.0.1:3000/api/wine/${id}`)
+  
+
+            if(response.ok) {
+                  const data= await response.json();
+                    fillinFormWine(data)
+        
+            //  return data
+            
+            }
+
+                 }catch{console.log("fel");}
+
+            }
+
+                
+      async function  fillinFormWine(data)  {
+         
+                let formEl=document.getElementById("wform")
+              
+               
+                formEl.style.display="block"
+                             //visar form
+               // let h2_2El=document.getElementById("h2_2") //visar h2
+                //h2_2El.style.display="block"
+               
+  
+                       //Hämtar in data från HTML
+                let nameEl = document.getElementById("wname")
+                let priceEl = document.getElementById("wprice")
+                let priceEl2 = document.getElementById("wprice2")
+                let descriptionEl = document.getElementById("wdescription")
+            
+                //fyller i värdet i inputfält
+                nameEl.value=data.wineName
+                priceEl.value=data.winePrice
+                priceEl2.value=data.winePrice2
+                descriptionEl.value=data.wineDescription
+                console.log(data); 
+
+                let h2El=document.getElementById("wh2") 
+                let h2_2El=document.getElementById("wh2_2")
+                h2El.textContent=(data.id)
+                h2_2El.textContent=("Justera "+data. wineName+", rätt nr: ")
+               // let text1=document.createTextNode(data.id) //Lägger till id i h2
+                //let text2=document.createTextNode("Justera "+data. wineName+", rätt nr: ") //Lägger till id i h2
+
+               // h2El.appendChild(text1)
+               // h2_2El.appendChild(text2)
+    
+
+                    buttonEl=document.getElementById("wchange")  
+                       
+                    buttonEl.addEventListener("click", changeFormWine) //vid click anropas funktionen changeform
+                    
+
+            }
+        
+     
+       async function changeFormWine(e) {
+                e.preventDefault();
+                let h2El=document.getElementById("wh2")
+                let h2_2El=document.getElementById("wh2_2")
+                let id=h2El.textContent //id för huvudrätten
+                console.log(h2El.textContent);
+                    
+                formEl=document.getElementById("wform")
+                formEl=document.getElementById("wform").style.display="block" //Visar formulär
+
+                    //Hämtar in data från HTML
+                let wineNameEl=document.getElementById("wname") 
+                let winePriceEl=document.getElementById("wprice")
+                let winePriceEl2=document.getElementById("wprice2")
+                let wineDescriptionEl=document.getElementById("wdescription")
+     
+                    //Värden i inputfält (som man ändrar som man vill)
+                let wineName=wineNameEl.value
+                let winePrice=winePriceEl.value
+                let winePrice2=winePriceEl2.value
+                let wineDescription=wineDescriptionEl.value
+        
+                    //objekt för förrätt
+                let wine = {  
+                    wineName: wineName,
+                    winePrice: winePrice,
+                    winePrice2: winePrice2,
+                    wineDescription: wineDescription,
+                    } 
+
+        //     // const token = localStorage.getItem("user_token")
+                    //Uppdaterar den specifika förrätten med PUT
+
+                    
+            try {const response = await fetch (`http://127.0.0.1:3000/api/wine/${id}`, {
+                    method: "PUT",
+                    headers: {
+                        "content-type": "Application/json",
+                    //"authorization":"Bearer " + token
+             },
+                body: JSON.stringify(wine)
+            })
+
+                if(response.ok) {
+                const data= await response.json();
+                console.log(data);
+            
+        
+         } }catch(error) {
+
+                console.log("går ej att lägga till wine" +error);
+            
+         }
+                //Rensar formulär
+                wineNameEl.value=""
+                winePriceEl.value=""
+                winePriceEl2.value=""
+                wineDescriptionEl.value=""
+                h2El.textContent=""
+                h2_2El.textContent=""
+
+                getWine()               
 
             }
     
