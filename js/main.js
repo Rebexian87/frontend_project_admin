@@ -145,10 +145,7 @@ function init() {
 
     if(localStorage.getItem("user_token")) {
         menuEl.innerHTML= `
-                   <li class="liheadmenu"><a href="index.html">Startsida</a></li>
-          
-            
-            <li class="liheadmenu"><a href="secretPage.html">secret</a></li>
+            <li class="liheadmenu"><a href="add.html">Hantera menyn</a></li>        
             <li class="liheadmenu"><button id="logoutButton">Logga ut</button></li>
         
         `
@@ -156,7 +153,7 @@ function init() {
     } else { 
         
            menuEl.innerHTML= `
-              <li class="liheadmenu"><a href="index.html">Startsida</a></li>
+            
              <li class="liheadmenu"><a href="register.html">Registrera dig</a></li>
            
                <li class="liheadmenu"><a href="login.html">Logga in</a></li>
@@ -211,7 +208,7 @@ function init() {
             const data = await resp.json();
             // console.log(data);
             localStorage.setItem("user_token", data.response.token);
-            window.location.href= "secretPage.html"
+            window.location.href= "add.html"
             console.log(data.response.token);
             
             
