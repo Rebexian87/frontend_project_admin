@@ -141,7 +141,7 @@ function init() {
         menuEl.innerHTML= `
             <li class="liheadmenu"><a href="add.html">Menyn</a></li>
             <li class="liheadmenu"><a href="reviews.html">Omdömen</a></li>
-            <li class="liheadmenu"><a href="reviews.html">Kontakt</a></li>           
+            <li class="liheadmenu"><a href="contact.html">Kontakt</a></li>           
             <li class="liheadmenu"><button id="logoutButton">Logga ut</button></li>`
 
     } else { 
