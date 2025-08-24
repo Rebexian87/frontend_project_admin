@@ -1,18 +1,15 @@
+
+//Variabler
 let menuEl=document.getElementById("headmenu");
-
-let logInFormEl =document.getElementById("logInForm")
-
-let registerFormEl =document.getElementById("registerForm")
-
-let starterFormEl =document.getElementById("starterForm") 
-
-let mainCourseFormEl =document.getElementById("mainCourseForm") 
-
-let dessertFormEl =document.getElementById("dessertForm") 
-
-let wineFormEl =document.getElementById("wineForm") 
+let logInFormEl =document.getElementById("logInForm");
+let registerFormEl =document.getElementById("registerForm");
+let starterFormEl =document.getElementById("starterForm") ;
+let mainCourseFormEl =document.getElementById("mainCourseForm"); 
+let dessertFormEl =document.getElementById("dessertForm");
+let wineFormEl =document.getElementById("wineForm");
 
 
+//Händer när sidan startas.
 window.onload=init;
 function init() {
     changeMenu()
@@ -20,11 +17,11 @@ function init() {
     let starterEl=document.getElementById("starterForm")
 
     if(starterEl) {
-    getStarters()}
+        getStarters()}
 
     
     if(mainCourseFormEl) {
-    getmainCourses()}
+        getmainCourses()}
 
     if (dessertFormEl) {
         getDesserts()}
@@ -69,7 +66,7 @@ function init() {
         let buttonsmenu=document.getElementById("buttonsmenu")
         
     if(buttonsmenu){
-
+        //När man trycker på en knapp så visas element tillhörande den knappen
         let buttonStarters=document.getElementById("buttonStarters")
         buttonStarters.addEventListener("click", showStarters)
         let buttonMainCourses=document.getElementById("buttonMainCourses")
@@ -90,7 +87,7 @@ function init() {
 
       
 }
-
+    //Funktion som visar element som tillhör förrätter och ser till att resten inte visas
     function showStarters() {
         let sectionMainCourseFormEl=document.getElementById("sectionMainCourseForm")
         sectionMainCourseFormEl.style.display="none"
@@ -101,7 +98,8 @@ function init() {
         let sectionstarterFormEl=document.getElementById("sectionstarterForm")
         sectionstarterFormEl.style.display="block"         
     }
-
+    
+       //Funktion som visar element som tillhör huvudrätter och ser till att resten inte visas
     function showMainCourses() {
         let sectionstarterFormEl=document.getElementById("sectionstarterForm")
         sectionstarterFormEl.style.display="none"
@@ -112,7 +110,7 @@ function init() {
         let sectionMainCourseFormEl=document.getElementById("sectionMainCourseForm")
         sectionMainCourseFormEl.style.display="block"
     }
-
+       //Funktion som visar element som tillhör desserter och ser till att resten inte visas
     function showDesserts() {
         let sectionstarterFormEl=document.getElementById("sectionstarterForm")
         sectionstarterFormEl.style.display="none"
@@ -123,7 +121,7 @@ function init() {
         let sectionDessertFormEl=document.getElementById("sectionDessertForm")
         sectionDessertFormEl.style.display="block"
     }
-
+//Funktion som visar element som tillhör vin och ser till att resten inte visas
     function showWine(){
         let sectionstarterFormEl=document.getElementById("sectionstarterForm")
         sectionstarterFormEl.style.display="none"
@@ -135,16 +133,19 @@ function init() {
         sectionWineFormEl.style.display="block"
     }
 
+    //Funcktion som visar olika menyer beroende på token.
     function changeMenu(){
 
-    if(localStorage.getItem("user_token")) {
+    if(localStorage.getItem("user_token")) { 
+        //Meny man ser när man har en token
         menuEl.innerHTML= `
-            <li class="liheadmenu"><a href="add.html">Hantera menyn</a></li>
-            <li class="liheadmenu"><a href="reviewsAndContact.html">Omdömen och kontakt</a></li>        
+            <li class="liheadmenu"><a href="add.html">Menyn</a></li>
+            <li class="liheadmenu"><a href="reviews.html">Omdömen</a></li>
+            <li class="liheadmenu"><a href="reviews.html">Kontakt</a></li>           
             <li class="liheadmenu"><button id="logoutButton">Logga ut</button></li>`
 
     } else { 
-        
+        //Meny man ser när man inte har någon token
         menuEl.innerHTML= `            
             <li class="liheadmenu"><a href="register.html">Registrera dig</a></li>
             <li class="liheadmenu"><a href="login.html">Logga in</a></li>`         
@@ -181,7 +182,7 @@ function init() {
        }
 
        try {
-        //POST-anrop , hämtar data
+        //POST-anrop, lägger till data
 
         const resp = await fetch("http://127.0.0.1:3000/api/login", {
             method: "POST",
@@ -1282,7 +1283,7 @@ function init() {
             contactUses.appendChild(liEl)
             let button1=document.createElement("button")            
       
-            liEl.appendChild(button1)
+            contactUs.appendChild(button1)
             button1.setAttribute('id',contactUs.id)
             let text1=document.createTextNode("Ta bort")
             button1.appendChild(text1)      
@@ -1292,7 +1293,7 @@ function init() {
         })} 
     }
 
-    async function deleteReview(e){
+    async function deleteContactUs(e){
         let id=(e.target.id)       
         const response = await fetch(`http://127.0.0.1:3000/api/contactUs/${id}`, 
         
