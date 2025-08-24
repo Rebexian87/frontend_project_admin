@@ -27,67 +27,67 @@ function init() {
     getmainCourses()}
 
     if (dessertFormEl) {
-        getDesserts()
-        
-    }
+        getDesserts()}
 
     if (wineFormEl) {
-        getWine()
-        
-    }
+        getWine()}
 
     
-      
+        let sectionstarterFormEl=document.getElementById("sectionstarterForm")
+        let sectionMainCourseFormEl=document.getElementById("sectionMainCourseForm")
+        let sectionDessertFormEl=document.getElementById("sectionDessertForm")
+        let sectionWineFormEl=document.getElementById("sectionWineForm")
  
     if(registerFormEl) {
-
         
-       document.getElementById("submits").addEventListener("click", createUser); 
-    }
-       if(logInFormEl) {
+       document.getElementById("submits").addEventListener("click", createUser); }
+
+    if(logInFormEl) {
         logInFormEl.addEventListener("submit", loginUser) }
 
-          if(starterFormEl) {
-      document.getElementById("addStarter").addEventListener("click", createStarter);
-    }
+    if(starterFormEl) {
+        document.getElementById("addStarter").addEventListener("click", createStarter);
+        formEl=document.getElementById("form").style.display="none"
+        sectionstarterFormEl.style.display="none" }
 
-          if(mainCourseFormEl) {
-      document.getElementById("addMainCourse").addEventListener("click", createMainCourse);
-    }
-    formEl=document.getElementById("form").style.display="none"
-    // h2_2El=document.getElementById("h2_2").style.display="none"
-    mCformEl=document.getElementById("mCform").style.display="none"
-    dformEl=document.getElementById("dform").style.display="none"
-    wformEl=document.getElementById("wform").style.display="none"
-
-    let sectionstarterFormEl=document.getElementById("sectionstarterForm")
-    sectionstarterFormEl.style.display="none"
-
-    let sectionMainCourseFormEl=document.getElementById("sectionMainCourseForm")
-    sectionMainCourseFormEl.style.display="none"
-
-    let sectionDessertFormEl=document.getElementById("sectionDessertForm")
-    sectionDessertFormEl.style.display="none"
-
-    let sectionWineFormEl=document.getElementById("sectionWineForm")
-    sectionWineFormEl.style.display="none"
+    if(mainCourseFormEl) {
+        document.getElementById("addMainCourse").addEventListener("click", createMainCourse);
+        mCformEl=document.getElementById("mCform").style.display="none"       
+        sectionMainCourseFormEl.style.display="none" } 
    
-       if(sectionDessertFormEl) {
-      document.getElementById("addDessert").addEventListener("click", createDessert);
-    }
+    if(sectionDessertFormEl) {
+        document.getElementById("addDessert").addEventListener("click", createDessert);
+        dformEl=document.getElementById("dform").style.display="none"         
+        sectionDessertFormEl.style.display="none" }
 
     if(sectionWineFormEl) {
-    document.getElementById("addWine").addEventListener("click", createWine);
-    }
+        document.getElementById("addWine").addEventListener("click", createWine);
+        wformEl=document.getElementById("wform").style.display="none"           
+        sectionWineFormEl.style.display="none"  }
 
-    let buttonStarters=document.getElementById("buttonStarters")
-    buttonStarters.addEventListener("click", showStarters)
-    let buttonMainCourses=document.getElementById("buttonMainCourses")
-    buttonMainCourses.addEventListener("click", showMainCourses)
-    let buttonDessert=document.getElementById("buttonDessert")
-    buttonDessert.addEventListener("click", showDesserts)
-    let buttonWine=document.getElementById("buttonWine")
-    buttonWine.addEventListener("click", showWine)
+    
+        let buttonsmenu=document.getElementById("buttonsmenu")
+        
+    if(buttonsmenu){
+
+        let buttonStarters=document.getElementById("buttonStarters")
+        buttonStarters.addEventListener("click", showStarters)
+        let buttonMainCourses=document.getElementById("buttonMainCourses")
+        buttonMainCourses.addEventListener("click", showMainCourses)
+        let buttonDessert=document.getElementById("buttonDessert")
+        buttonDessert.addEventListener("click", showDesserts)
+        let buttonWine=document.getElementById("buttonWine")
+        buttonWine.addEventListener("click", showWine)}
+        let tablereview=document.getElementById("tablereview")
+
+    if (tablereview){
+        getReviews()}
+
+    let contactUs=document.getElementById("contactUs")
+    
+    if(contactUs) {
+        getContactUs()}
+
       
 }
 
@@ -99,10 +99,9 @@ function init() {
         let sectionWineFormEl=document.getElementById("sectionWineForm")
         sectionWineFormEl.style.display="none"
         let sectionstarterFormEl=document.getElementById("sectionstarterForm")
-        sectionstarterFormEl.style.display="block"
-            // let sectionstarterTableEl=document.getElementById("sectionstarterTable")
-            // sectionstarterTableEl.style.display="block"
+        sectionstarterFormEl.style.display="block"         
     }
+
     function showMainCourses() {
         let sectionstarterFormEl=document.getElementById("sectionstarterForm")
         sectionstarterFormEl.style.display="none"
@@ -123,7 +122,6 @@ function init() {
         sectionWineFormEl.style.display="none"
         let sectionDessertFormEl=document.getElementById("sectionDessertForm")
         sectionDessertFormEl.style.display="block"
-
     }
 
     function showWine(){
@@ -135,37 +133,27 @@ function init() {
         sectionDessertFormEl.style.display="none"
         let sectionWineFormEl=document.getElementById("sectionWineForm")
         sectionWineFormEl.style.display="block"
-
-
     }
 
     function changeMenu(){
 
-    // localStorage.setItem("user_token", "testtest")
-
     if(localStorage.getItem("user_token")) {
         menuEl.innerHTML= `
-            <li class="liheadmenu"><a href="add.html">Hantera menyn</a></li>        
-            <li class="liheadmenu"><button id="logoutButton">Logga ut</button></li>
-        
-        `
+            <li class="liheadmenu"><a href="add.html">Hantera menyn</a></li>
+            <li class="liheadmenu"><a href="reviewsAndContact.html">Omdömen och kontakt</a></li>        
+            <li class="liheadmenu"><button id="logoutButton">Logga ut</button></li>`
 
     } else { 
         
-           menuEl.innerHTML= `
-            
-             <li class="liheadmenu"><a href="register.html">Registrera dig</a></li>
-           
-               <li class="liheadmenu"><a href="login.html">Logga in</a></li>
-        
-        `
-
-           //<li class="liheadmenu"><a href="register.html">Startsida</a></li>
+        menuEl.innerHTML= `            
+            <li class="liheadmenu"><a href="register.html">Registrera dig</a></li>
+            <li class="liheadmenu"><a href="login.html">Logga in</a></li>`         
     }
 
+
     let logoutButton= document.getElementById("logoutButton");
-    if(logoutButton) {
-        logoutButton.addEventListener("click", ()=> {
+        if(logoutButton) {
+            logoutButton.addEventListener("click", ()=> {
             localStorage.removeItem("user_token");
             window.location.href="login.html"
 
@@ -175,20 +163,19 @@ function init() {
 
     //funktion för att logga in en anvöndare och att man får en token
     async function loginUser(e) { 
-    e.preventDefault();
+        e.preventDefault();
 
         //Hämtar värden från inputraderna
         let userEl=document.getElementById("username").value;
         let passwordEl=document.getElementById("password").value;
 
         //Kontrollerar så att både användarbnamn och lösenord är ifyllt
-       if(!userEl||!passwordEl)  {
+        if(!userEl||!passwordEl)  {
         console.log("fyll i allt");
-        return;
-        
-       }
+        return; }
+
        //objekt för användare
-       let user = {
+        let user = {
         username: userEl,
         password: passwordEl
        }
@@ -222,7 +209,8 @@ function init() {
  
 }
         //Funktion för att skapa användare
-     async function createUser (username,  email, password){
+    async function createUser (username,  email, password){
+
         //Hämtar från html-element
             let usernameEl=document.getElementById("username")
             let emailEl=document.getElementById("email")
@@ -250,14 +238,13 @@ function init() {
                 body: JSON.stringify(user)
             })
             const data= await response.json();
-            console.log(data);
-            
+            console.log(data);            
         }
 
 
 
             //Funktion för att skapa förrätt
-        async function createStarter (e){
+    async function createStarter (e){
 
             e.preventDefault();
               //Hämtar från html-element
@@ -292,15 +279,10 @@ function init() {
             if(response.ok) {
             const data= await response.json();
             console.log(data);
-
-        
-            
         
         } }catch(error) {
+            console.log("går ej att lägga till starter" +error);}
 
-            console.log("går ej att lägga till starter" +error);
-            
-        }
 
         //Rensar formulär när man skapat förrätt
             sNameEl.value=""
@@ -311,6 +293,8 @@ function init() {
 
     }
 
+
+
     async function getStarters (){
 
         //Hämtar data alla starters
@@ -319,30 +303,23 @@ function init() {
             const data= await response.json();
             console.log(data);
             displayStarters(data) }} catch {
-            console.log("fel");}          
-        
-     
-    }
+            console.log("fel");} }
 
 
-async function displayStarters (data) {
+    async function displayStarters (data) {
         let starters = document.getElementById("starters")
         starters.innerHTML=""; //Rensar formulär
       
         //loopar igenom alla förrätter och visar i en tabell
-       if(starters) {
+        if(starters) {
         data.forEach(starter => {
            
-
-            // <td>${id2}</td>
-
             let trEl=document.createElement("tr")
-
             let td1El=document.createElement("td")
             td1El.textContent=(starter.sName)
             let td2El=document.createElement("td")
             td2El.textContent=(starter.sPrice)
-             let td3El=document.createElement("td")
+            let td3El=document.createElement("td")
             td3El.textContent=(starter.sDescription)
             trEl.appendChild(td1El)
             trEl.appendChild(td2El)
@@ -375,11 +352,9 @@ async function displayStarters (data) {
      
     //Funktion för att deleta en starter
     async function deleteStarter(e){
-        let id=(e.target.id)
-        console.log(id);
-        
+        let id=(e.target.id)          
 
-             const response = await fetch(`http://127.0.0.1:3000/api/starters/${id}`, 
+        const response = await fetch(`http://127.0.0.1:3000/api/starters/${id}`, 
         
         { method: "DELETE",
           headers: {
@@ -390,46 +365,32 @@ async function displayStarters (data) {
              console.log(data);
            
             getStarters()
-
     }
 
-            //Funktion för att hämta en starter med ett specifikt id
-
+        //Funktion för att hämta en starter med ett specifikt id
     async function getStarterWithId(e) {
         
         let id=e.target.id
         console.log(id);
 
-              try {const response = await fetch(`http://127.0.0.1:3000/api/starters/${id}`)
+        try {const response = await fetch(`http://127.0.0.1:3000/api/starters/${id}`)
   
 
             if(response.ok) {
-                  const data= await response.json();
-                    fillinForm(data)
-        
-            //  return data
-            
-            }
+                const data= await response.json(); //  return data
+                fillinForm(data)  }
 
-                 }catch{console.log("fel");
-             }
-       
+                 }catch{console.log("fel"); } }
 
-        
-     
-    }
 
-             //Funktion för att förifylla form med starter med det specifika id:t
+        //Funktion för att förifylla form med starter med det specifika id:t
     async function  fillinForm(data)  {
       
          
                 let formEl=document.getElementById("form") 
-                formEl.style.display="block"
-                           //visar form
-                //let h2_2El=document.getElementById("h2_2") //visar h2
-                //h2_2El.style.display="block"
-  
-                       //Hämtar in data från HTML
+                formEl.style.display="block"  //visar form                         
+              
+                //Hämtar in data från HTML
                 let nameEl = document.getElementById("sname")
                 let priceEl = document.getElementById("sprice")
                 let descriptionEl = document.getElementById("sdescription")
@@ -443,21 +404,16 @@ async function displayStarters (data) {
                 let h2El=document.getElementById("h2") 
                 let h2_2El=document.getElementById("h2_2")
                 h2El.textContent=data.id
-                h2_2El.textContent=("Justera "+data.sName+", rätt nr: ") 
-                //let text1=document.createTextNode(data.id) //Lägger till id i h2
-                //let text2=document.createTextNode("Justera "+data.sName+", rätt nr: ") //Lägger till id i h2
-                //h2El.appendChild(text1)
-                //h2_2El.appendChild(text2)
-
-    
-
-                    buttonEl=document.getElementById("schange")     
-                    buttonEl.addEventListener("click", changeForm) //vid click anropas funktionen changeform
+                h2_2El.textContent=("Justera "+data.sName+", rätt nr: ")          
+                
+                buttonEl=document.getElementById("schange")     
+                buttonEl.addEventListener("click", changeForm) //vid click anropas funktionen changeform
 
             }
 
             //funktion för att ändra den aktuella förrätten
     async function changeForm(e) {
+
                 e.preventDefault();
                 let h2El=document.getElementById("h2")
                 let h2_2El=document.getElementById("h2_2")
@@ -510,21 +466,16 @@ async function displayStarters (data) {
                 sPriceEl.value=""
                 sDescriptionEl.value=""
                 h2El.textContent=""
-                h2_2El.textContent=""
-                
+                h2_2El.textContent=""               
 
-                getStarters()               
-
-            }
-
-
-
+                getStarters()}
             
 
             //Funktion för att skapa förrätt
-        async function createMainCourse (e){
+    async function createMainCourse (e){
 
             e.preventDefault();
+
               //Hämtar från html-element
             let mainCourseNameEl=document.getElementById("mainCourseName")
             let mainCoursePriceEl=document.getElementById("mainCoursePrice")
@@ -541,6 +492,7 @@ async function displayStarters (data) {
             mainCoursePrice: mainCoursePrice,
             mainCourseDescription: mainCourseDescription,
             }
+
             //Token från när man loggar in
             const token = localStorage.getItem("user_token")
 
@@ -556,13 +508,10 @@ async function displayStarters (data) {
 
             if(response.ok) {
             const data= await response.json();
-            console.log(data);
-
-        
+            console.log(data);       
             
         
         } }catch(error) {
-
             console.log("går ej att lägga till mainCourse" +error);
             
         }
@@ -584,10 +533,8 @@ async function displayStarters (data) {
             const data= await response.json();
             console.log(data);
             displayMainCourses(data) }} catch {
-            console.log("fel");}          
-        
-     
-    }
+            console.log("fel");} }
+
 
     async function displayMainCourses(data) {
         let mainCourses= document.getElementById("mainCourses")
@@ -597,16 +544,12 @@ async function displayStarters (data) {
        if(mainCourses) {
         data.forEach(mainCourse => {
            
-
-            // <td>${id2}</td>
-
-            let trEl=document.createElement("tr")
-
+            let trEl=document.createElement("tr")          
             let td1El=document.createElement("td")
             td1El.textContent=(mainCourse.mainCourseName)
             let td2El=document.createElement("td")
             td2El.textContent=(mainCourse.mainCoursePrice)
-             let td3El=document.createElement("td")
+            let td3El=document.createElement("td")
             td3El.textContent=(mainCourse.mainCourseDescription)
             trEl.appendChild(td1El)
             trEl.appendChild(td2El)
@@ -642,15 +585,15 @@ async function displayStarters (data) {
         console.log(id);
         
 
-             const response = await fetch(`http://127.0.0.1:3000/api/mainCourse/${id}`, 
+        const response = await fetch(`http://127.0.0.1:3000/api/mainCourse/${id}`, 
         
-        { method: "DELETE",
-          headers: {
+            { method: "DELETE",
+             headers: {
                     "content-type": "Application/json"
                  },
-          });
-          const data= await response.json();
-             console.log(data);
+            });
+            const data= await response.json();
+            console.log(data);
            
             getmainCourses()
 
@@ -661,33 +604,23 @@ async function displayStarters (data) {
         let id=e.target.id
         console.log(id);
 
-              try {const response = await fetch(`http://127.0.0.1:3000/api/mainCourse/${id}`)
+         try {const response = await fetch(`http://127.0.0.1:3000/api/mainCourse/${id}`)
   
 
             if(response.ok) {
                   const data= await response.json();
-                    fillinFormMainCourse(data)
-        
-            //  return data
-            
-            }
+                    fillinFormMainCourse(data)}
 
-                 }catch{console.log("fel");
-             }
-       
+                 }catch{console.log("fel");}}
 
-        
-     
-    }
 
-      async function  fillinFormMainCourse(data)  {
+    async function  fillinFormMainCourse(data)  {
          
                 let formEl=document.getElementById("mCform") 
-                formEl.style.display="block"                //visar form
-               // let h2_2El=document.getElementById("h2_2") //visar h2
-                //h2_2El.style.display="block"
+                formEl.style.display="block"  //visar form
+            
   
-                       //Hämtar in data från HTML
+                //Hämtar in data från HTML
                 let nameEl = document.getElementById("mCname")
                 let priceEl = document.getElementById("mCprice")
                 let descriptionEl = document.getElementById("mCdescription")
@@ -702,21 +635,17 @@ async function displayStarters (data) {
                 let h2_2El=document.getElementById("mCh2_2")
                 h2El.textContent=data.id
                 h2_2El.textContent=("Justera "+data.mainCourseName+", rätt nr: ")
-                //let text1=document.createTextNode(data.id) //Lägger till id i h2
-                //let text2=document.createTextNode("Justera "+data.mainCourseName+", rätt nr: ") //Lägger till id i h2
+               
 
-                //h2El.appendChild(text1)
-                //h2_2El.appendChild(text2)
-    
-
-                    buttonEl=document.getElementById("mCchange")     
-                    buttonEl.addEventListener("click", changeFormMainCourse) //vid click anropas funktionen changeform
+                buttonEl=document.getElementById("mCchange")     
+                buttonEl.addEventListener("click", changeFormMainCourse) //vid click anropas funktionen changeform
 
             }
 
 
             
-                async function changeFormMainCourse(e) {
+    async function changeFormMainCourse(e) {
+
                 e.preventDefault();
                 let h2El=document.getElementById("mCh2")
                 let h2_2El=document.getElementById("mCh2_2")
@@ -779,8 +708,8 @@ async function displayStarters (data) {
     
 /*här börjar dessert */
 
-                    //Funktion för att skapa förrätt
-        async function createDessert (e){
+        //Funktion för att skapa förrätt
+    async function createDessert (e){
 
             e.preventDefault();
               //Hämtar från html-element
@@ -834,7 +763,7 @@ async function displayStarters (data) {
 
     }
 
-           async function getDesserts (){
+    async function getDesserts (){
 
         //Hämtar data alla starters
         try {const response = await fetch ("http://127.0.0.1:3000/api/dessert")
@@ -842,29 +771,25 @@ async function displayStarters (data) {
             const data= await response.json();
             console.log(data);
             displayDesserts(data) }} catch {
-            console.log("fel");}          
-        
-     
-    }
+            console.log("fel");} }
+
 
     async function displayDesserts(data) {
+
         let desserts= document.getElementById("desserts")
         desserts.innerHTML=""; //Rensar formulär
       
         //loopar igenom alla förrätter och visar i en tabell
-       if(desserts) {
+        if(desserts) {
+
         data.forEach(dessert => {
            
-
-            // <td>${id2}</td>
-
             let trEl=document.createElement("tr")
-
             let td1El=document.createElement("td")
             td1El.textContent=(dessert.dessertName)
             let td2El=document.createElement("td")
             td2El.textContent=(dessert.dessertPrice)
-             let td3El=document.createElement("td")
+            let td3El=document.createElement("td")
             td3El.textContent=(dessert.dessertDescription)
             trEl.appendChild(td1El)
             trEl.appendChild(td2El)
@@ -898,51 +823,40 @@ async function displayStarters (data) {
         //Funktion för att deleta en starter
     async function deleteDessert(e){
         let id=(e.target.id)
-        console.log(id);
-        
 
-             const response = await fetch(`http://127.0.0.1:3000/api/dessert/${id}`, 
+        const response = await fetch(`http://127.0.0.1:3000/api/dessert/${id}`, 
         
         { method: "DELETE",
           headers: {
                     "content-type": "Application/json"
                  },
           });
-          const data= await response.json();
-             console.log(data);
+            const data= await response.json();
+            console.log(data);
            
             getDesserts()
 
     }
 
-        async function getDessertWithId(e) {
+    async function getDessertWithId(e) {
         
         let id=e.target.id
-        console.log(id);
 
-              try {const response = await fetch(`http://127.0.0.1:3000/api/dessert/${id}`)
-  
+        try {const response = await fetch(`http://127.0.0.1:3000/api/dessert/${id}`)  
 
             if(response.ok) {
-                  const data= await response.json();
-                    fillinFormDessert(data)
-        
-            //  return data
-            
-            }
+                const data= await response.json();
+                fillinFormDessert(data) }
 
-                 }catch{console.log("fel");
-             } }
+                 }catch{console.log("fel"); } }
+
        
-      async function  fillinFormDessert(data)  {
+    async function  fillinFormDessert(data)  {
          
                 let formEl=document.getElementById("dform") 
-                formEl.style.display="block"                //visar form
-               // let h2_2El=document.getElementById("h2_2") //visar h2
-                //h2_2El.style.display="block"
+                formEl.style.display="block"       //visar form            
                
-  
-                       //Hämtar in data från HTML
+                //Hämtar in data från HTML
                 let nameEl = document.getElementById("dname")
                 let priceEl = document.getElementById("dprice")
                 let descriptionEl = document.getElementById("ddescription")
@@ -956,22 +870,17 @@ async function displayStarters (data) {
                 let h2El=document.getElementById("dh2") 
                 let h2_2El=document.getElementById("dh2_2")
                 h2El.textContent=data.id
-                h2_2El.textContent=("Justera "+data. dessertName+", rätt nr: ")
-               // let text1=document.createTextNode(data.id) //Lägger till id i h2
-               // let text2=document.createTextNode("Justera "+data. dessertName+", rätt nr: ") //Lägger till id i h2
-
-               // h2El.appendChild(text1)
-                //h2_2El.appendChild(text2)
+                h2_2El.textContent=("Justera "+data. dessertName+", rätt nr: ")      
     
-
-                    buttonEl=document.getElementById("dchange")     
-                    buttonEl.addEventListener("click", changeFormDessert) //vid click anropas funktionen changeform
+                buttonEl=document.getElementById("dchange")     
+                buttonEl.addEventListener("click", changeFormDessert) //vid click anropas funktionen changeform
 
             }
         
      
    
-             async function changeFormDessert(e) {
+    async function changeFormDessert(e) {
+
                 e.preventDefault();
                 let h2El=document.getElementById("dh2")
                 let h2_2El=document.getElementById("dh2_2")
@@ -1037,7 +946,7 @@ async function displayStarters (data) {
 
             
             //Funktion för att skapa vin
-        async function createWine (e){
+    async function createWine (e){
 
             e.preventDefault();
               //Hämtar från html-element
@@ -1095,7 +1004,7 @@ async function displayStarters (data) {
 
     }
 
-       async function getWine(){
+    async function getWine(){
 
         //Hämtar data alla starters
         try {const response = await fetch ("http://127.0.0.1:3000/api/wine")
@@ -1103,27 +1012,20 @@ async function displayStarters (data) {
             const data= await response.json();
             console.log(data);
             displayWine(data) }} catch {
-            console.log("fel");}          
-        
-     
-    }
+            console.log("fel");} }
+
 
     async function displayWine(data) {
+
         let wines= document.getElementById("wine")
-        wines.innerHTML=""; //Rensar formulär
-
-        let wform= document.getElementById("wform")
-       
-      
+        wines.innerHTML=""; //Rensar formulär      
+        
         //loopar igenom alla förrätter och visar i en tabell
-       if(wines) {
+        
+        if(wines) {
         data.forEach(wine => {
-           
-
-            // <td>${id2}</td>
 
             let trEl=document.createElement("tr")
-
             let td1El=document.createElement("td")
             td1El.textContent=(wine.wineName)
             let td2El=document.createElement("td")
@@ -1163,11 +1065,9 @@ async function displayStarters (data) {
 
         //Funktion för att deleta en starter
     async function deleteWine(e){
-        let id=(e.target.id)
-        console.log(id);
-               
+        let id=(e.target.id)               
 
-             const response = await fetch(`http://127.0.0.1:3000/api/wine/${id}`, 
+        const response = await fetch(`http://127.0.0.1:3000/api/wine/${id}`, 
         
         { method: "DELETE",
           headers: {
@@ -1181,41 +1081,25 @@ async function displayStarters (data) {
 
     }
 
-        async function getWineWithId(e) {
-           
-            
-        
-        let id=e.target.id
-        console.log(id);
+    async function getWineWithId(e) {       
 
-              try {const response = await fetch(`http://127.0.0.1:3000/api/wine/${id}`)
-  
+        let id=e.target.id       
+
+            try {const response = await fetch(`http://127.0.0.1:3000/api/wine/${id}`)  
 
             if(response.ok) {
                   const data= await response.json();
-                    fillinFormWine(data)
-        
-            //  return data
-            
-            }
-
-                 }catch{console.log("fel");}
-
-            }
+                    fillinFormWine(data) }
+                 }catch{console.log("fel");} }
 
                 
-      async function  fillinFormWine(data)  {
+    async function  fillinFormWine(data)  {
          
-                let formEl=document.getElementById("wform")
+                let formEl=document.getElementById("wform")              
+               
+                formEl.style.display="block" //visar form
               
-               
-                formEl.style.display="block"
-                             //visar form
-               // let h2_2El=document.getElementById("h2_2") //visar h2
-                //h2_2El.style.display="block"
-               
-  
-                       //Hämtar in data från HTML
+                //Hämtar in data från HTML
                 let nameEl = document.getElementById("wname")
                 let priceEl = document.getElementById("wprice")
                 let priceEl2 = document.getElementById("wprice2")
@@ -1231,24 +1115,17 @@ async function displayStarters (data) {
                 let h2El=document.getElementById("wh2") 
                 let h2_2El=document.getElementById("wh2_2")
                 h2El.textContent=(data.id)
-                h2_2El.textContent=("Justera "+data. wineName+", rätt nr: ")
-               // let text1=document.createTextNode(data.id) //Lägger till id i h2
-                //let text2=document.createTextNode("Justera "+data. wineName+", rätt nr: ") //Lägger till id i h2
+                h2_2El.textContent=("Justera "+data. wineName+", rätt nr: ")      
 
-               // h2El.appendChild(text1)
-               // h2_2El.appendChild(text2)
-    
-
-                    buttonEl=document.getElementById("wchange")  
-                       
-                    buttonEl.addEventListener("click", changeFormWine) //vid click anropas funktionen changeform
+                buttonEl=document.getElementById("wchange")                         
+                buttonEl.addEventListener("click", changeFormWine) //vid click anropas funktionen changeform
                     
-
             }
         
      
        async function changeFormWine(e) {
                 e.preventDefault();
+
                 let h2El=document.getElementById("wh2")
                 let h2_2El=document.getElementById("wh2_2")
                 let id=h2El.textContent //id för huvudrätten
@@ -1312,3 +1189,121 @@ async function displayStarters (data) {
 
             }
     
+
+            // Här börjar reviews
+
+
+    async function getReviews(){
+
+        //Hämtar data alla starters
+        try {const response = await fetch ("http://127.0.0.1:3000/api/reviews")
+            if(response.ok) {
+            const data= await response.json();
+            console.log(data);
+            displayReviews(data) }} catch {
+            console.log("fel");}}
+
+
+    async function displayReviews(data) {
+        let reviews= document.getElementById("reviews")
+        reviews.innerHTML=""; //Rensar formulär  
+         
+        //loopar igenom alla förrätter och visar i en tabell
+        if(reviews) {
+        data.forEach(review => {
+
+            let trEl=document.createElement("tr")
+
+            let td1El=document.createElement("td")
+            td1El.textContent=(review.reviewName)
+            let td2El=document.createElement("td")
+            td2El.textContent=(review.reviewDescription)
+          
+            trEl.appendChild(td1El)
+            trEl.appendChild(td2El)
+            
+            reviews.appendChild(trEl)
+            let button1=document.createElement("button")
+            let td4El=document.createElement("td")
+            trEl.appendChild(td4El)
+            td4El.appendChild(button1)
+            button1.setAttribute('id',review.id)
+            let text1=document.createTextNode("Ta bort")
+            button1.appendChild(text1)     
+        
+            button1.addEventListener("click",deleteReview)  //Vid klick anropas funktionen deleteStarter
+                   
+         })}  
+    }
+
+    async function deleteReview(e){
+
+            let id=(e.target.id)  
+
+            const response = await fetch(`http://127.0.0.1:3000/api/review/${id}`, 
+        
+        { method: "DELETE",
+          headers: {
+                    "content-type": "Application/json"
+                 },
+          });
+          const data= await response.json();
+            console.log(data);           
+            getReviews()
+    }
+
+
+    //Här börjar konstakta oss    
+
+
+    async function getContactUs(){
+
+        //Hämtar data alla starters
+        try {const response = await fetch ("http://127.0.0.1:3000/api/contactUs")
+            if(response.ok) {
+            const data= await response.json();
+            console.log(data);
+            displayContactUs(data) }} catch {
+            console.log("fel");}  }
+
+
+    async function displayContactUs(data) {
+        let contactUses= document.getElementById("contactUs")
+        contactUses.innerHTML=""; //Rensar formulär  
+       
+        //loopar igenom alla förrätter och visar i en tabell
+        if(contactUses) {
+        data.forEach(contactUs => {
+           
+            let liEl=document.createElement("li")
+            liEl.innerHTML = `<strong>${contactUs.contactUsName}</strong><br>           
+                            prioritet: ${contactUs.contactUsEmail}<br> prioritet: ${contactUs.contactUsDescription}<br> `;
+
+            contactUses.appendChild(liEl)
+            let button1=document.createElement("button")            
+      
+            liEl.appendChild(button1)
+            button1.setAttribute('id',contactUs.id)
+            let text1=document.createTextNode("Ta bort")
+            button1.appendChild(text1)      
+                
+            button1.addEventListener("click",deleteReview)  //Vid klick anropas funktionen deleteStarter
+                            
+        })} 
+    }
+
+    async function deleteReview(e){
+        let id=(e.target.id)       
+        const response = await fetch(`http://127.0.0.1:3000/api/contactUs/${id}`, 
+        
+        { method: "DELETE",
+          headers: {
+                    "content-type": "Application/json"
+                 },
+          });
+          const data= await response.json();
+             console.log(data);
+           
+            getContactUs()
+
+    }

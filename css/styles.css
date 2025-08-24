@@ -1,5 +1,5 @@
 * {
-    margin: 0; 
+    margin: auto; 
 }
 
 .container {
@@ -165,4 +165,48 @@ textarea{
     grid-area: 14/1/15/-1;
 }
 
+.position1register{
+   grid-area: 1/1/2/-1;
+}
+
+
+
+
+/*Styling for the header*/
+header {      
+        height: 140px;
+        background-color: rgb(18, 61, 10);
+        position: relative;
+        padding: 0 1em;
+        justify-content: space-between;
+        align-items: center;
+        position: static;
+        display: flex;       
+    }
+
+nav {    
+        font-size: 1.4em;}
+    nav ul li {
+        display: inline;
+           
+         }       
+
+    a {
+        display: block;
+        padding: 6px 12px;
+        text-decoration: none;
+        color: white; /*textfärg från variabel*/
+        display: inline;
+    }
+
+    .active {
+        color: rgb(154, 203, 226);
+        font-style: italic;
+         font-weight: bold;
+   text-decoration-line: underline;
+    }
+
+    a:hover{
+         background-color: rgb(11, 141, 28);
+    }
 
