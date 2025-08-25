@@ -17,11 +17,13 @@
 h1 {
     margin-top: 8%;
     margin-bottom: 5%;
+    text-align: center;
 }
 
  h2 {
    
     margin-bottom: 5%;
+
 }
 
 section {
@@ -210,3 +212,8 @@ nav {
          background-color: rgb(11, 141, 28);
     }
 
+footer {
+        background-color: rgb(18, 61, 10);
+    color: white;
+    padding: 2.2em
+}

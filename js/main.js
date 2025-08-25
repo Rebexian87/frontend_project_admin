@@ -210,7 +210,8 @@ function init() {
  
 }
         //Funktion för att skapa användare
-    async function createUser (username,  email, password){
+    async function createUser (e){
+             e.preventDefault();
 
         //Hämtar från html-element
             let usernameEl=document.getElementById("username")
@@ -218,9 +219,9 @@ function init() {
             let passwordEl=document.getElementById("password")
 
               //Hämtar värden från inputraderna
-            username=usernameEl.value
-            email=emailEl.value
-            password=passwordEl.value
+            let username=usernameEl.value
+            let email=emailEl.value
+            let password=passwordEl.value
 
               //objekt för användare
             let user = {  
@@ -353,13 +354,15 @@ function init() {
      
     //Funktion för att deleta en starter
     async function deleteStarter(e){
-        let id=(e.target.id)          
+        let id=(e.target.id)  
+           const token = localStorage.getItem("user_token")        
 
         const response = await fetch(`http://127.0.0.1:3000/api/starters/${id}`, 
         
         { method: "DELETE",
           headers: {
-                    "content-type": "Application/json"
+                    "content-type": "Application/json",
+                    "authorization":"Bearer " + token
                  },
           });
           const data= await response.json();
@@ -441,13 +444,13 @@ function init() {
                     sDescription: sDescription,
                     }
 
-        //     // const token = localStorage.getItem("user_token")
+             const token = localStorage.getItem("user_token")
                     //Uppdaterar den specifika förrätten med PUT
             try {const response = await fetch (`http://127.0.0.1:3000/api/starters/${id}`, {
                     method: "PUT",
                     headers: {
                         "content-type": "Application/json",
-                    //"authorization":"Bearer " + token
+                    "authorization":"Bearer " + token
              },
                 body: JSON.stringify(starter)
             })
@@ -585,12 +588,13 @@ function init() {
         let id=(e.target.id)
         console.log(id);
         
-
+        const token = localStorage.getItem("user_token")
         const response = await fetch(`http://127.0.0.1:3000/api/mainCourse/${id}`, 
         
             { method: "DELETE",
              headers: {
-                    "content-type": "Application/json"
+                    "content-type": "Application/json",
+                       "authorization":"Bearer " + token
                  },
             });
             const data= await response.json();
@@ -673,7 +677,7 @@ function init() {
                     mainCourseDescription: mainCourseDescription,
                     } 
 
-        //     // const token = localStorage.getItem("user_token")
+            const token = localStorage.getItem("user_token")
                     //Uppdaterar den specifika förrätten med PUT
 
                     
@@ -681,7 +685,7 @@ function init() {
                     method: "PUT",
                     headers: {
                         "content-type": "Application/json",
-                    //"authorization":"Bearer " + token
+                    "authorization":"Bearer " + token
              },
                 body: JSON.stringify(mainCourse)
             })
@@ -825,11 +829,14 @@ function init() {
     async function deleteDessert(e){
         let id=(e.target.id)
 
+        const token = localStorage.getItem("user_token")
+
         const response = await fetch(`http://127.0.0.1:3000/api/dessert/${id}`, 
         
         { method: "DELETE",
           headers: {
-                    "content-type": "Application/json"
+                    "content-type": "Application/json",
+                      "authorization":"Bearer " + token
                  },
           });
             const data= await response.json();
@@ -908,7 +915,7 @@ function init() {
                     dessertDescription: dessertDescription,
                     } 
 
-        //     // const token = localStorage.getItem("user_token")
+            const token = localStorage.getItem("user_token")
                     //Uppdaterar den specifika förrätten med PUT
 
                     
@@ -916,7 +923,7 @@ function init() {
                     method: "PUT",
                     headers: {
                         "content-type": "Application/json",
-                    //"authorization":"Bearer " + token
+                    "authorization":"Bearer " + token
              },
                 body: JSON.stringify(dessert)
             })
@@ -1068,11 +1075,13 @@ function init() {
     async function deleteWine(e){
         let id=(e.target.id)               
 
+        const token = localStorage.getItem("user_token")
         const response = await fetch(`http://127.0.0.1:3000/api/wine/${id}`, 
         
         { method: "DELETE",
           headers: {
-                    "content-type": "Application/json"
+                    "content-type": "Application/json",
+                    "authorization":"Bearer " + token
                  },
           });
           const data= await response.json();
@@ -1155,7 +1164,7 @@ function init() {
                     wineDescription: wineDescription,
                     } 
 
-        //     // const token = localStorage.getItem("user_token")
+            const token = localStorage.getItem("user_token")
                     //Uppdaterar den specifika förrätten med PUT
 
                     
@@ -1163,7 +1172,7 @@ function init() {
                     method: "PUT",
                     headers: {
                         "content-type": "Application/json",
-                    //"authorization":"Bearer " + token
+                    "authorization":"Bearer " + token
              },
                 body: JSON.stringify(wine)
             })
