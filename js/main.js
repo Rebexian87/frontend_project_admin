@@ -1284,20 +1284,31 @@ function init() {
         //loopar igenom alla förrätter och visar i en tabell
         if(contactUses) {
         data.forEach(contactUs => {
-           
-            let liEl=document.createElement("li")
-            liEl.innerHTML = `<strong>${contactUs.contactUsName}</strong><br>           
-                            prioritet: ${contactUs.contactUsEmail}<br> prioritet: ${contactUs.contactUsDescription}<br> `;
+         
+            let trEl=document.createElement("tr")
 
-            contactUses.appendChild(liEl)
-            let button1=document.createElement("button")            
-      
-            contactUs.appendChild(button1)
+            let td1El=document.createElement("td")
+            td1El.textContent=(contactUs.contactUsName)
+            let td2El=document.createElement("td")
+            td2El.textContent=(contactUs.contactUsEmail)
+            let td3El=document.createElement("td")
+            td2El.textContent=(contactUs.contactUsDescription)
+          
+            trEl.appendChild(td1El)
+            trEl.appendChild(td2El)
+            trEl.appendChild(td3El)
+            
+            contactUses.appendChild(trEl)
+            let button1=document.createElement("button")
+            let td4El=document.createElement("td")
+            trEl.appendChild(td4El)
+            td4El.appendChild(button1)
             button1.setAttribute('id',contactUs.id)
             let text1=document.createTextNode("Ta bort")
-            button1.appendChild(text1)      
-                
-            button1.addEventListener("click",deleteReview)  //Vid klick anropas funktionen deleteStarter
+            button1.appendChild(text1)     
+        
+            button1.addEventListener("click",deleteContactUs)  //Vid klick anropas funktionen deleteStarter
+            
                             
         })} 
     }
